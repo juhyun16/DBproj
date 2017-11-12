@@ -26,6 +26,6 @@ urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
 
     # super admin, admin 로그인 기능 구현 앱.
-    url(r'^accounts/', include('accounts.urls')),
+    url(r'^accounts/', include('accounts.urls', namespace = 'accounts')),
 
 ]
