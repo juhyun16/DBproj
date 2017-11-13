@@ -136,4 +136,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# 로그인 페이지 URL 지정
+LOGIN_URL = '/accounts/login/'
+
+# 로그인 완료 후 redirection할 URL 지정
+LOGIN_REDIRECT_URL = '/accounts/profile/'
+
+# 로그아웃 완료 후 이동할 URL 지정
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+# 인증에 사용할 custom User model을 지정해준다.
+AUTH_USER_MODEL = 'auth.User'
+
 
