@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block title %}
+    나의 프로필
+{% endblock title %}
+
+
+{% block extra_body %}
+
+    <h1>{{user}}'s Profile</h1>
+    <p>{{user.email}}</p>
+
+{% endblock extra_body %}
+
+

@@ -1,17 +1,33 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db import connection
+from django.contrib.auth.forms import UserCreationForm
+from django.conf import settings
+from django.views.generic.base import TemplateView
 
 # Create your views here.
 
-def login(request):
+def signup(request):
     context = dict()
 
-    cursor = connection.cursor()
-    cursor.execute('''SELECT * FROM sadmin''')
-    row = cursor.fetchone()
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if(form.is_valid()):
+            form.save()
+            return redirect(settings.LOGIN_URL)
+    else:
+        form = UserCreationForm()
 
-    context["ID"] = row[1]
-    context["PW"] = row[2]
-    return render(request, "home.html", context)
+    context["form"] = form
+
+    return render(request, 'accounts/signup_form.html', context)
+
+
+
+def login(request):
+    pass
+
+
+class ProfileView(TemplateView):
+    template_name = 'accounts/myprofile.html'
 
 
